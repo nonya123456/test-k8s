@@ -1,0 +1,10 @@
+deploy:
+  - okteto build -t nonya579/test-proxy-frontend
+  - okteto build -t nonya579/test-proxy-backend
+  - okteto build -t nonya579/nginx-config
+  - kubectl apply -f webserver.yaml
+  - kubectl apply -f webserver-svc.yaml
+  - kubectl apply -f frontend.yaml
+  - kubectl apply -f frontend-svc.yaml
+  - kubectl apply -f backend.yaml
+  - kubectl apply -f backend-svc.yaml
